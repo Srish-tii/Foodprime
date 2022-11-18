@@ -18,11 +18,12 @@ class Category
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(targetEntity: "App\Entity\Dishes", mappedBy: 'category')]
-    private $dishes;
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Dishes::class)]
+    private Collection $dish;
 
     public function __construct()
     {
+        $this->category = new ArrayCollection();
         $this->dishes = new ArrayCollection();
     }
 
@@ -46,15 +47,15 @@ class Category
     /**
      * @return Collection<int, Dishes>
      */
-    public function getDishes(): Collection
+    public function getDish(): Collection
     {
-        return $this->dishes;
+        return $this->dish;
     }
 
     public function addDish(Dishes $dish): self
     {
-        if (!$this->dishes->contains($dish)) {
-            $this->dishes->add($dish);
+        if (!$this->dish->contains($dish)) {
+            $this->dish->add($dish);
             $dish->setCategory($this);
         }
 
@@ -63,7 +64,7 @@ class Category
 
     public function removeDish(Dishes $dish): self
     {
-        if ($this->dishes->removeElement($dish)) {
+        if ($this->dish->removeElement($dish)) {
             // set the owning side to null (unless already changed)
             if ($dish->getCategory() === $this) {
                 $dish->setCategory(null);

@@ -26,7 +26,7 @@ class Dishes
     private ?string $image = null;
 
     #[ORM\ManyToOne(targetEntity: "App\Entity\Category", inversedBy: 'dishes')]
-    private ?string $category = null;
+    private $category = null;
 
     public function getId(): ?int
     {
