@@ -1,20 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OrderController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% set sum =0 %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'E:/xampp/htdocs/Foodprime-1/src/Controller/OrderController.php'|file_link(0) }}">src/Controller/OrderController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'E:/xampp/htdocs/Foodprime-1/templates/order/index.html.twig'|file_link(0) }}">templates/order/index.html.twig</a></code></li>
-    </ul>
-</div>
+<br>
+<div class="container">
+<h2>Your Order</h2>
+<br>
+	<table class="table table-striped">
+			<thead>
+				<tr>
+					<td>Order No.</td>
+					<td>Name</td>
+					<td>Price</td>
+					<td>Status</td>
+					<td></td>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for order in orders %}
+					{% set sum = sum + order.preis %}
+					<tr>
+						<td>{{order.order_number}}</td>
+						<td>{{order.name}}</td>
+						<td>{{order.price}}</td>
+						{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+							<td>{{order.status}}</td>
+						{% endif %}
+						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+							<td>
+								<div class="dropdown show">
+									<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										{{order.status}}
+									</a>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+										<a class="dropdown-item" href="{{ path('status',{id: order.id, status: 'open'}) }}">open</a>
+										<a class="dropdown-item" href="{{ path('status',{id: order.id, status: 'finished'}) }}">finished</a>
+										<a class="dropdown-item" href="{{ path('status',{id: order.id, status: 'archive'}) }}">archive</a>
+									</div>
+								</div>
+							</td>
+						{% endif %}
+						<td>
+							{% if order.status == "open" %}
+								<a class="btn btn-outline-danger btn-sm" href={{ path('delete',{id: order.id } )}} role="button">Remove</a>
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+				<td></td>
+				<td></td>
+				<td>{{sum}}
+					EUR</td>
+				<td></td>
+				<td></td>
+			</tbody>
+		</table>
+	</div>
 {% endblock %}

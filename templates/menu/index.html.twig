@@ -2,6 +2,11 @@
 
 {% block body %}
 
+{% for message in app.flashes('order')%}
+<div class="alert alert-success">
+<h3>{{message}}</h3>
+</div>
+{% endfor %}
 <section class="playlist-section spad">
 		<div class="container-fluid">
 			<div class="section-title">
@@ -27,7 +32,7 @@
 								{{dish.price}}</h5>
 							<p>BestNr.
 								{{dish.id}}
-								{# <a class="btn btn-outline-danger btn-sm" href={{ path('bestellen',{id: gericht.id} )}} role="button">Bestellen</a> #}
+								<a class="btn btn-outline-danger btn-sm" href={{ path('new_order',{id: dish.id} )}} role="button">Order</a>
 							</p>
 						</div>
 					</div>

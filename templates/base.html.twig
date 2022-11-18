@@ -43,7 +43,7 @@
 		<header class="header-section clearfix">
 			{# <a href="{{path('home')}}" class="site-logo"> #}
             <a href="#" class="site-logo">
-				<img src="{{asset('img/logo.png')}}" alt="">
+				<h2>FOODPRIME</h2>
 			</a>
 			<div class="header-right">
 				<div class="user-panel">
@@ -62,20 +62,20 @@
 					<a href="{{path('home')}}">Welcome</a>
 				</li>
 				<li>
-					{# <a href="{{path('menu')}}">Menükarte</a> #}
-                    <a href="#">Menükarte</a>
+					<a href="{{path('app_menu')}}">Menucart</a>
 				</li>
+
 				<li>
-					{# <a href="{{path('bestellung')}}">Bestellungen</a> #}
-                    <a href="#">Bestellungen</a>
+					<a href="{{path('app_order')}}">Order</a> 
+                    
 				</li>
 				<li>
 					{# <a href="{{path('mail')}}">Kellner</a> #}
-                    <a href="#">Kellner</a>
+                    <a href="#">Mail</a>
 				</li>
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 				<li>
-					<a href="#">Mitarbeiter</a> 
+					<a href="#">Employee</a> 
 					<ul class="sub-menu">
 							<li>
 								<a href="{{path('dishes.edit')}}">Dishes</a>
@@ -85,7 +85,7 @@
 							</li>
 							<li>
 								{# <a href="{{path('bestellung')}}">Bestellungen</a> #}
-								<a href="#">Bestellungen</a>
+								<a href="{{path('app_order')}}">Order</a>
 							</li>
 							<li>
 								{# <a href="{{path('reg')}}">Registrieren</a> #}
@@ -109,11 +109,11 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="section-title">
-							<h2>All you can eat für 19,95 €</h2>
+							<h2>All you can eat for 19,95 €</h2>
 						</div>
 					</div>
 					<div class="col-lg-6">
-						<p>Das Restaurant bietet für 19,95 € pro Person folgendes Konzept an: Zunächst könnt ihr aus vielen verschiedenen Salatvariationen, kalten und warmen Vorspeisen am Vorspeisenbuffet frei wählen. Anschließend serviert das Personal mehr als zehn verschiedene Fleischvariationen, solange ihr möchtet. Als Abschluss wartet dann das Dessertbuffet mit frischen und hausgemachten Leckereien auf euch.</p>
+						<p>The restaurant offers the following concept for €19.95 per person: First of all, you can choose from many different salad variations, cold and warm starters at the starter buffet. Then the staff serves more than ten different meat variations, as long as you like. Finally, the dessert buffet with fresh and homemade delicacies awaits you.</p>
 						{# <a href="{{path('menu')}}" class="site-btn">Try it now</a> #}
                         <a href="#" class="site-btn">Try it now</a>
 					</div>
@@ -129,31 +129,31 @@
 						<div class="row">
 							<div class="col-sm-4">
 								<div class="footer-widget">
-									<h2>Über uns</h2>
+									<h2>About us</h2>
 									<ul>
 										<li><a href="">Welcome</a></li>
-										<li><a href="">Menükarte</a></li>
-										<li><a href="">Bestellungen</a></li>
+										<li><a href="">Menucart</a></li>
+										<li><a href="">Order</a></li>
 									</ul>
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class="footer-widget">
-									<h2>Menükarte</h2>
+									<h2>Menucart</h2>
 									<ul>
-										<li><a href="">Getränke</a></li>
-										<li><a href="">Vorspeisen</a></li>
-										<li><a href="">Hauptspeisen</a></li>
-										<li><a href="">Nachspeisen</a></li>
+										<li><a href="">Drinks</a></li>
+										<li><a href="">Starter</a></li>
+										<li><a href="">Main dish</a></li>
+										<li><a href="">Dessert</a></li>
 									</ul>
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class="footer-widget">
-									<h2>Kontakt</h2>
+									<h2>Contact</h2>
 									<ul>
-										<li><a href="">Kellner</a></li>
-										<li><a href="">Impressum</a></li>
+										<li><a href="">Waiter</a></li>
+										<li><a href="">Admin</a></li>
 										<li><a href="">Login</a></li>
 									</ul>
 								</div>
@@ -168,11 +168,7 @@
 							Copyright &copy;<script>
 								document.write(new Date().getFullYear());
 							</script>
-							All rights reserved | This template is made with
-							<i class="fa fa-heart-o" aria-hidden="true"></i>
-							by
-							<a href="https://colorlib.com" target="_blank">Colorlib</a>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							All rights reserved FoodPrime
 						</div>
 						<div class="social-links">
 							<a href="">

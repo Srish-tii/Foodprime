@@ -13,7 +13,7 @@
 							<h2><span>{{dishes1.name}}</span>!</h2>
                             <p>Try {{dishes1.description}} for just {{dishes1.price}}!</p>
                             <a href="{{path('app_menu')}}" class="site-btn">Menucart </a> 
-                            <a href="#" class="site-btn sb-c2">Order</a>
+                            <a href="{{path('app_order', {id: dishes1.id})}}" class="site-btn sb-c2">Order</a>
 						</div>
 					</div>
 					<div class="col-lg-6">
@@ -32,7 +32,7 @@
                                 <h2><span>{{dishes2.name}}</span>!</h2>
                             <p>Try {{dishes2.description}} for just {{dishes1.price}}!</p>
                             <a href="{{path('app_menu')}}" class="site-btn">Menucart </a> 
-                            <a href="#" class="site-btn sb-c2">Order</a>
+                            <a href="{{path('app_order', {id: dishes2.id})}}" class="site-btn sb-c2">Order</a>
                             </div>
                         </div>
                         <div class="col-lg-6">
