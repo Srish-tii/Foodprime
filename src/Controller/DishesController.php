@@ -15,9 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class DishesController extends AbstractController
 {
     #[Route('/', name: 'edit')]
-    // /**
-    //  * @Route("/dishes", name="dishes")
-    //  */
     public function index(DishesRepository $ds): Response
     {
         $dishes =$ds->findAll();
@@ -33,14 +30,24 @@ class DishesController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted()){
            $em = $doctrine -> getManager();
+           
+        //    $image = $request -> files -> get('dishes')['attachment'];
+           $image = $form -> get('attachment') -> getData();
+           if($image){
+                $filename = md5(uniqid()).'.'.$image->guessClientExtension();
+           }
+           $image->move(
+                $this->getParameter('images_folder'),
+                $filename
+           );
+
+           $dishes->setImage($filename);
+           
            $em->persist($dishes);
            $em->flush();
 
            return $this->redirect($this->generateUrl('dishes.edit'));
         }
-
-        
-
         return $this->render('dishes/create.html.twig', [
             'createForm' => $form->createView(),
         ]);
@@ -54,5 +61,12 @@ class DishesController extends AbstractController
 
         $this->addFlash('success', 'Dish was deleted successfully');
         return $this->redirect($this->generateUrl('dishes.edit'));
+    }
+    #[Route('/show/{id}', name: 'show')]
+    public function show(Dishes $dishes){
+        return $this->render('dishes/show.html.twig', [
+            'dishes' => $dishes,
+        ]);
+
     }
 }

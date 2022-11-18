@@ -17,6 +17,7 @@
         <td> Order Number </td>
         <td> Name </td>
         <td> Description </td>
+        <td> Category </td>
         <td> Price </td>
         <td> Delete </td>
         <td><a href="{{ path('dishes.create')}}">Create</a> </td>
@@ -26,8 +27,10 @@
         {% for dish in dishes %}
         <tr>
             <td>{{dish.id}}</td>
-            <td>{{dish.name}}</td>
+            <td><a href="{{path('dishes.show',{id: dish.id})}}">{{dish.name}}</a></td>
+            {# <td>{{dish.name}}</td> #}
             <td>{{dish.description}}</td>
+            <td>{{dish.category}}</td>
             <td>{{dish.price}}</td>
             <td><a href="{{ path('dishes.delete', {id: dish.id})}}">x</a> </td>
             {# <td>{{dish.name}}</td>
@@ -38,3 +41,4 @@
 </table>
 </div>
 {% endblock %}
+

@@ -73,25 +73,28 @@
 					{# <a href="{{path('mail')}}">Kellner</a> #}
                     <a href="#">Kellner</a>
 				</li>
-				{# {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-					<li>
-						<a href="#">Mitarbeiter</a> #}
-						<ul class="sub-menu">
+				{# {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+				<li>
+					<a href="#">Mitarbeiter</a> 
+					<ul class="sub-menu">
 							<li>
 								<a href="{{path('dishes.edit')}}">Dishes</a>
 							</li>
-							{# <li>
-								<a href="{{path('gericht.anlegen')}}">Anlegen</a>
+							<li>
+								<a href="{{path('dishes.create')}}">Create</a>
 							</li>
 							<li>
-								<a href="{{path('bestellung')}}">Bestellungen</a>
+								{# <a href="{{path('bestellung')}}">Bestellungen</a> #}
+								<a href="#">Bestellungen</a>
 							</li>
 							<li>
-								<a href="{{path('reg')}}">Registrieren</a>
+								{# <a href="{{path('reg')}}">Registrieren</a> #}
+								<a href="#">Registrieren</a>
 							</li>
 							<li>
-								<a href="{{path('app_logout')}}">Logout</a>
-							</li> #}
+								{# <a href="{{path('app_logout')}}">Logout</a> #}
+								<a href="#">Logout</a>
+							</li> 
 						</ul>
 					</li>
 				{# {% endif %} #}
