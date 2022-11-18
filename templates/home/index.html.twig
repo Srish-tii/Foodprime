@@ -10,15 +10,15 @@
                     <div class="row">
                     <div class="col-lg-6">
 						<div class="hs-text">
-							<h2><span>Music</span> for all.</h2>
-                            <p>Lorem ipsum</p>
-                            <a href="#" class="site-btn">Download </a>
-                            <a href="#" class="site-btn sb-c2">Start trial</a>
+							<h2><span>{{dishes1.name}}</span>!</h2>
+                            <p>Try {{dishes1.description}} for just {{dishes1.price}}!</p>
+                            <a href="{{path('app_menu')}}" class="site-btn">Menucart </a> 
+                            <a href="#" class="site-btn sb-c2">Order</a>
 						</div>
 					</div>
 					<div class="col-lg-6">
 						<div class="hr-img">
-                            <img src="{{asset('img/hero-bg.png')}}">
+                            <img src="{{asset('images_here/' ~ dishes1.image)}}">
                         </div>
 					</div>
 				</div>
@@ -29,15 +29,15 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hs-text">
-                                <h2><span>Music</span> for all.</h2>
-                                <p>Lorem ipsum</p>
-                                <a href="#" class="site-btn">Download </a>
-                                <a href="#" class="site-btn sb-c2">Start trial</a>
+                                <h2><span>{{dishes2.name}}</span>!</h2>
+                            <p>Try {{dishes2.description}} for just {{dishes1.price}}!</p>
+                            <a href="{{path('app_menu')}}" class="site-btn">Menucart </a> 
+                            <a href="#" class="site-btn sb-c2">Order</a>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="hr-img">
-                                <img src="{{asset('img/hero-bg.png')}}">
+                                <img src="{{asset('images_here/' ~ dishes2.image)}}">
                             </div>
 					    </div>
                     </div>
