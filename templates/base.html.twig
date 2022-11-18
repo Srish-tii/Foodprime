@@ -47,14 +47,14 @@
 			</a>
 			<div class="header-right">
 				<div class="user-panel">
-					{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-						{# <a href="{{path('app_login')}}" class="register">Login</a> #}
-                        <a href="#" class="register">Login</a>
+					{% if not is_granted('IS_AUTHENTICATED_FULLY') %} 
+						
+                        <a href="{{path('app_login')}}" class="register">Login</a>
 					{% endif %}
-					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-						{# <a href="{{path('app_logout')}}" class="register">Logout</a> #}
-                        <a href="#" class="register">Logout</a>
-					{% endif %}
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %} 
+						<a href="{{path('app_logout')}}" class="register">Logout</a>
+                        
+					{% endif %} 
 				</div>
 			</div>
 			<ul class="main-menu">
@@ -73,7 +73,7 @@
 					{# <a href="{{path('mail')}}">Kellner</a> #}
                     <a href="#">Kellner</a>
 				</li>
-				{# {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 				<li>
 					<a href="#">Mitarbeiter</a> 
 					<ul class="sub-menu">
@@ -89,15 +89,15 @@
 							</li>
 							<li>
 								{# <a href="{{path('reg')}}">Registrieren</a> #}
-								<a href="#">Registrieren</a>
+								<a href="{{path('reg')}}">Register</a>
 							</li>
 							<li>
 								{# <a href="{{path('app_logout')}}">Logout</a> #}
-								<a href="#">Logout</a>
+								<a href="{{path('reg')}}">Logout</a>
 							</li> 
 						</ul>
 					</li>
-				{# {% endif %} #}
+				{% endif %} 
 			</ul>
 		</header>
 		<!-- Header section end -->
