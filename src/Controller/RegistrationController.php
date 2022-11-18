@@ -18,7 +18,7 @@ use Doctrine\Persistence\ManagerRegistry;
 class RegistrationController extends AbstractController
 {
     #[Route('/reg', name: 'reg')]
-    public function reg(Request $request, ManagerRegistry $doctrine): Response
+    public function reg(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passEncoder): Response
     {
         $regform = $this->createFormBuilder()
         ->add('username',TextType::class,[
@@ -31,6 +31,22 @@ class RegistrationController extends AbstractController
             ])
         ->add('registration', SubmitType::class)
         ->getForm();
+        $regform->handleRequest($request);
+
+        if($regform->isSubmitted()){
+            $input = $regform->getData();
+            //dump($input);
+            $user = new User;
+            $user->setUsername($input['username']);
+            $user->setPassword(
+                $passEncoder->hashPassword($user, $input['password'])
+            );
+            $em = $doctrine->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirect($this->generateUrl('home'));
+            
+            }
 
         return $this->render('registration/index.html.twig', [
             'regform' => $regform->createView(),
