@@ -29,7 +29,7 @@ class OrderController extends AbstractController
         $order->setNewTable("new_table");
         $order->setName($dishes->getName());
         // $order->setOrderNumber($dishes->getOrderNumber());
-        $order->setPrice($dishes->getprice());
+        $order->setPrice($dishes->getPrice());
         $order->setStatus("open");
 
         $em = $doctrine -> getManager();
